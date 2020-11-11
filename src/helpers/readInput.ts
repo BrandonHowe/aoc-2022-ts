@@ -1,25 +1,16 @@
 import * as fs from "fs";
 import { promisify } from "util";
 
-export enum InputFlags {
-    Nothing,
-    SplitRows,
-    SplitNumbers,
-    Grid
-}
+const readFile = promisify(fs.readFile);
 
-export const readInput = async (filepath: string, flag: InputFlags) => {
-    const readFile = promisify(fs.readFile);
+export const readInputRaw = (filepath: string): Promise<string> =>
+    readFile(filepath, "utf-8");
 
-    const data = await readFile(filepath, "utf-8");
-    switch (flag) {
-        case InputFlags.Nothing:
-            return data;
-        case InputFlags.SplitRows:
-            return data.split("\n");
-        case InputFlags.SplitNumbers:
-            return data.split("\n").map(Number);
-        case InputFlags.Grid:
-            return data.split("\n").map(l => l.split(""));
-    }
-};
+export const readInputSplit = async (filepath: string): Promise<string[]> =>
+    (await readFile(filepath, "utf-8")).split("\n");
+
+export const readInputSplitNum = async (filepath: string): Promise<number[]> =>
+    (await readFile(filepath, "utf-8")).split("\n").map(Number);
+
+export const readInputGrid = async (filepath: string): Promise<string[][]> =>
+    (await readFile(filepath, "utf-8")).split("\n").map(l => l.split(""));

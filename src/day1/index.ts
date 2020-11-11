@@ -1,11 +1,8 @@
 import * as path from "path";
-import { InputFlags, readInput } from "../helpers/readInput";
+import { readInputSplitNum } from "../helpers/readInput";
 
 const main = async () => {
-    const input = await readInput(
-        path.join(__dirname, "./input.txt"),
-        InputFlags.SplitNumbers
-    );
+    const input = await readInputSplitNum(path.join(__dirname, "./input.txt"));
 
     console.time("main");
 

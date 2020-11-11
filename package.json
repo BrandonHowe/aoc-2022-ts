@@ -4,7 +4,7 @@
   "description": "A template for Advent of Code in TypeScript.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "day1": "ts-node src/day1/index.ts"
   },
   "author": "ImperialWater",
   "license": "ISC",

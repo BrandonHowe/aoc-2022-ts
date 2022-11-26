@@ -1,12 +1,28 @@
 import * as path from "path";
-import { readInputSplitNum } from "../helpers/readInput";
+import readInput, { InputMode } from "../helpers/readInput";
+
+const part1 = (input: string) => {
+
+};
+
+const part2 = (input: string) => {
+
+};
 
 const main = async () => {
-    const input = await readInputSplitNum(path.join(__dirname, "./input.txt"));
+    const input = await readInput(path.join(__dirname, "./input.txt"), InputMode.Raw);
 
-    console.time("main");
+    console.time("part1");
 
-    console.timeEnd("main");
+    console.log(part1(input));
+
+    console.timeEnd("part1");
+
+    console.time("part2");
+
+    console.log(part2(input));
+
+    console.timeEnd("part2");
 };
 
 main();

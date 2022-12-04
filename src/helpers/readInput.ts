@@ -6,14 +6,23 @@ const readFile = promisify(fs.readFile);
 export const readInputRaw = (filepath: string): Promise<string> =>
     readFile(filepath, "utf-8");
 
-export const readInputSplit = async (filepath: string): Promise<string[]> =>
-    (await readFile(filepath, "utf-8")).split("\n");
+export const readInputSplit = async (filepath: string): Promise<string[]> => {
+    const lines = (await readFile(filepath, "utf-8")).split("\n");
+    lines.pop();
+    return lines;
+}
 
-export const readInputSplitNum = async (filepath: string): Promise<number[]> =>
-    (await readFile(filepath, "utf-8")).split("\n").map(Number);
+export const readInputSplitNum = async (filepath: string): Promise<number[]> => {
+    const lines = (await readFile(filepath, "utf-8")).split("\n").map(Number);
+    lines.pop();
+    return lines;
+}
 
-export const readInputGrid = async (filepath: string): Promise<string[][]> =>
-    (await readFile(filepath, "utf-8")).split("\n").map(l => l.split(""));
+export const readInputGrid = async (filepath: string): Promise<string[][]> => {
+    const lines = (await readFile(filepath, "utf-8")).split("\n").map(l => l.split(""));
+    lines.pop();
+    return lines;
+}
 
 export enum InputMode {
     Raw,

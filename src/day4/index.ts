@@ -30,7 +30,6 @@ const part2 = (input: Input) => {
 
 const main = async () => {
     const input = await readInput(path.join(__dirname, "./input.txt"), InputMode.Split);
-    input.pop();
     const parsed: Input = input.map(l => l.split(",").map(j => j.split("-").map(Number) as [number, number]) as Input[0]);
 
     console.time("part1");

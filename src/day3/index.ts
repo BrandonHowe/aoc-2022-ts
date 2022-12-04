@@ -51,7 +51,6 @@ const part2 = (input: string[]) => {
 
 const main = async () => {
     const input = await readInput(path.join(__dirname, "./input.txt"), InputMode.Split);
-    input.pop();
     const parsed = input.map(l => [l.slice(0, l.length / 2), l.slice(l.length / 2)]) as [string, string][];
 
     console.log(parsed);
